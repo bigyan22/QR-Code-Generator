@@ -23,15 +23,12 @@ if st.button('Make QR'):
         qr.make(fit=True)
         image = qr.make_image(fill_color="black", back_color="white")
 
-        # Convert PIL image to bytes for Streamlit display
         buffer = BytesIO()
         image.save(buffer, format="PNG")
         buffer.seek(0)
 
-        # Display QR code in Streamlit
         st.image(buffer, caption="Your QR Code")
 
-        # Save QR code as an image file if file name is provided
         if file_path:
             try:
                 image.save(file_path)
